@@ -7,7 +7,6 @@ class Dataset(torch.utils.data.Dataset):
         self.tail_idx = data[:, 2]
         self.num_entities = num_entities
         assert self.head_idx.shape == self.rel_idx.shape == self.tail_idx.shape
-
         self.length = len(self.head_idx)
 
     def __len__(self):

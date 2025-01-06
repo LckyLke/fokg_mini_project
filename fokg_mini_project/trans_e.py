@@ -14,7 +14,7 @@ class TransEForward(ForwardFunction):
         emb_tail = torch.nn.functional.normalize(emb_tail, p=self.distance_norm, dim=1)
 
         emb_sum = emb_head + emb_rel - emb_tail
-        distance = torch.norm(emb_sum, p=self.distance_norm, dim=1)
+        distance = torch.norm(emb_sum, p=self.distance_norm, dim=-1)
 
         return distance
 

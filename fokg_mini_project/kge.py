@@ -68,7 +68,7 @@ class KGE(torch.nn.Module, ABC):
                 runnning_loss += loss.item() 
                 loss.backward()
                 self.optimizer.step()
-            print(f"Epoch {epoch+1}/{num_epochs}, Train Loss: {runnning_loss/len(dataloader)}")
+            print(f"Epoch {epoch+1}/{num_epochs}, Train Loss: {runnning_loss/len(dataloader.dataset)}")
 
     def save_model(self, path=None):
         if path is None:
@@ -87,7 +87,7 @@ class KGE(torch.nn.Module, ABC):
             dataset=dataset_train,
             batch_size=batch_size,
             shuffle=True,
-            num_workers=8,
+            num_workers=1,
             drop_last=True,
             collate_fn=dataset_train.collate_fn
         )
@@ -105,7 +105,16 @@ class KGE(torch.nn.Module, ABC):
             distance = self.forward(self.emb_ent, self.emb_rel, head_idx, rel_idx, tail_idx)
         return distance.item()
 
-    def predict_tail(self, head_idx, rel_idx, top_k=10):
+    def score_triple_normalized(self, head_idx, rel_idx, tail_idx):
+        head_idx = torch.tensor([head_idx], dtype=torch.long, device=self.device)
+        rel_idx = torch.tensor([rel_idx], dtype=torch.long, device=self.device)
+        tail_idx = torch.tensor([tail_idx], dtype=torch.long, device=self.device)
+        with torch.no_grad():
+            distance = self.forward(self.emb_ent, self.emb_rel, head_idx, rel_idx, tail_idx)
+        if self.model_name == "ComplexForward":
+            return torch.sigmoid(-distance).item()
+
+    def predict_tail(self, head_idx, rel_idx, top_k=5):
         """
         Given a head and a relation, predict the top_k candidate tails.
         Returns a list of (entity_idx, distance) pairs, sorted by distance.
@@ -123,7 +132,7 @@ class KGE(torch.nn.Module, ABC):
         top_tails = [(sorted_indices[i].item(), sorted_distances[i].item()) for i in range(top_k)]
         return top_tails
 
-    def predict_head(self, tail_idx, rel_idx, top_k=10):
+    def predict_head(self, tail_idx, rel_idx, top_k=5):
         """
         Given a tail and a relation, predict the top_k candidate heads.
         Similar logic to predict_tail.
