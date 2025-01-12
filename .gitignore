@@ -162,3 +162,10 @@ cython_debug/
 #.idea/
 
 output/*
+
+/data_reference-kg_nt
+/data_family_nt
+/data_reference-kg-subset_nt
+/data
+/checkpoints
+data/reference.csv

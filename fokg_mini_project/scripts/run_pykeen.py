@@ -20,10 +20,9 @@ triples_factory = TriplesFactory.from_path("data/reference.csv")
 
 
 
+training, testing, validation = triples_factory.split([0.8, 0.1, 0.1])
 
-training = triples_factory
-testing = triples_factory
-validation = triples_factory
+
 
 # d=training
 # id_to_entity = {i: e for e, i in d.entity_to_id.items()}
@@ -31,12 +30,12 @@ validation = triples_factory
  
 result = pipeline(
 	model='ComplEx',	
-	training=training,
+	training=triples_factory,
 	testing=testing,
 	validation=validation,
-	model_kwargs=dict(embedding_dim=50),
-	optimizer_kwargs=dict(lr=0.01),
-	training_kwargs=dict(num_epochs=10, batch_size=512),
+	model_kwargs=dict(embedding_dim=128*2),
+	optimizer_kwargs=dict(lr=0.005),
+	training_kwargs=dict(num_epochs=1000, batch_size=1024*32),
 )
 
 model = result.model
