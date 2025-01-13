@@ -1,0 +1,4 @@
+Added type relation: (rdflib.term.URIRef('http://example.org/entity1'), rdflib.term.URIRef('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), rdflib.term.URIRef('http://example.org/typeC'))
+Added type relation: (rdflib.term.URIRef('http://example.org/entity1'), rdflib.term.URIRef('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), rdflib.term.URIRef('http://example.org/typeD'))
+Added type relation: (rdflib.term.URIRef('http://example.org/entity2'), rdflib.term.URIRef('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), rdflib.term.URIRef('http://example.org/typeC'))
+Added type relation: (rdflib.term.URIRef('http://example.org/entity2'), rdflib.term.URIRef('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), rdflib.term.URIRef('http://example.org/typeD'))

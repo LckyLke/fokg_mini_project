@@ -17,7 +17,7 @@ def subset_file(input_file, output_file, fraction=0.01):
 # Define the file paths and fraction
 input_file = "data/reference-kg.nt"
 output_file = "data/reference-kg-subset.nt"
-subset_fraction = 0.1
+subset_fraction = 1.0
 
 subset_file(input_file, output_file, subset_fraction)
 path_of_kb = "data/reference-kg-subset.nt"

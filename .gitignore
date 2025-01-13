@@ -169,3 +169,7 @@ output/*
 /data
 /checkpoints
 data/reference.csv
+
+data*
+model_keci*
+*.nt
