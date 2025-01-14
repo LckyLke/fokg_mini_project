@@ -38,7 +38,7 @@ pip install -e .
 
 This installs the project in editable mode and registers the `factCheck` command.
 
-### Examples
+## Examples
 
 1. Run fact-checking with a pre-trained model:
    ```bash
