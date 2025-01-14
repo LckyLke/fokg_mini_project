@@ -15,8 +15,8 @@ Ensure you have **conda** installed on your system. You can install Miniconda or
 Clone the repository and navigate to the project directory:
 
 ```bash
-git clone <repository-url>
-cd <project-directory>
+git clone https://github.com/LckyLke/fokg_mini_project.git
+cd fokg_mini_project
 ```
 
 ### Step 2: Create and Activate a Conda Environment
@@ -24,7 +24,7 @@ cd <project-directory>
 Create a new conda environment and activate it:
 
 ```bash
-conda create --name fact-checking-env python=3.9 -y
+conda create --name fact-checking-env python=3.10.13 -y
 conda activate fact-checking-env
 ```
 
