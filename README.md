@@ -63,7 +63,7 @@ factCheck --reference-file <REFERENCE_FILE> --fact-base-file <FACT_BASE_FILE> [O
 
 1. Run fact-checking with a pre-trained model:
    ```bash
-   factCheck --reference-file data/reference-kg.nt --fact-base-file data/fokg-sw-test-2024.nt --model-path data/models/trained_model.pt
+   factCheck --reference-file data/reference-kg.nt --fact-base-file data/fokg-sw-test-2024.nt --model-path data/models/trained_model.pkl
    ```
 
 2. Run fact-checking and compute evaluation metrics:
