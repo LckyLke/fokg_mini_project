@@ -10,7 +10,7 @@ setup(
     description='A package for scoring facts using KGE Models with PyKEEN.',
     author='Luke Friedrichs',
     author_email='lukef@mail.uni-paderborn.de',
-    url='https://github.com/yourusername/fact-checker',
+    url='https://github.com/lckylke/fokg_mini_project',
     packages=find_packages(where="."),  
     install_requires=[
         'pykeen',
