@@ -18,6 +18,7 @@ setup(
         'pandas',
         'numpy',
         'scikit-learn',
+	'seaborn',    
     ],
     python_requires='>=3.8',
     entry_points={
