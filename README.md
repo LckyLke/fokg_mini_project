@@ -1,6 +1,4 @@
-Here’s the updated README with instructions for setting up and running the project using **conda** and including the `setup.py` configuration:
 
----
 
 # Fact Checking Project
 
