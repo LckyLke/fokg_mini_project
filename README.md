@@ -38,6 +38,23 @@ pip install -e .
 
 This installs the project in editable mode and registers the `factCheck` command.
 
+### Examples
+
+1. Run fact-checking with a pre-trained model:
+   ```bash
+   factCheck --reference-file data/reference-kg.nt --fact-base-file data/fokg-sw-test-2024.nt --model-path data/model_complex/trained_model.pkl
+   ```
+
+2. Run fact-checking and compute evaluation metrics:
+   ```bash
+   factCheck --reference-file data/reference-kg.nt --fact-base-file data/fokg-sw-train-2024.nt --is-labeled
+   ```
+
+3. Specify a custom output file:
+   ```bash
+   factCheck --reference-file data/reference-kg.nt --fact-base-file fokg-sw-test-2024.nt --output-ttl results.ttl
+   ```
+
 ## Usage Instructions
 
 Once the project is set up, you can use the `factCheck` command to run fact-checking experiments.
@@ -59,19 +76,4 @@ factCheck --reference-file <REFERENCE_FILE> --fact-base-file <FACT_BASE_FILE> [O
 - `--is-labeled`: Flag indicating that the `fact-base-file` contains labeled facts with truth values (`hasTruthValue`). If set, metrics will be computed.
 - `--output-ttl`: Path to the output file with predicted scores (default: `result.ttl`).
 
-### Examples
 
-1. Run fact-checking with a pre-trained model:
-   ```bash
-   factCheck --reference-file data/reference-kg.nt --fact-base-file data/fokg-sw-test-2024.nt --model-path data/model_complex/trained_model.pkl
-   ```
-
-2. Run fact-checking and compute evaluation metrics:
-   ```bash
-   factCheck --reference-file data/reference-kg.nt --fact-base-file data/fokg-sw-train-2024.nt --is-labeled
-   ```
-
-3. Specify a custom output file:
-   ```bash
-   factCheck --reference-file data/reference-kg.nt --fact-base-file fokg-sw-test-2024.nt --output-ttl results.ttl
-   ```
