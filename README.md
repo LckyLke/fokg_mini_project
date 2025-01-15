@@ -39,6 +39,14 @@ pip install -e .
 
 This installs the project in editable mode and registers the `factCheck` command.
 
+### Step 4: (Optional) Use GPU with Cuda
+
+To use your GPU for training install Cuda (11.8) for your operating system:
+
+```bash
+https://pytorch.org/get-started/locally/
+```
+
 ## Examples
 
 1. Run fact-checking with a pre-trained model:
