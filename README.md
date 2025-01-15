@@ -77,4 +77,51 @@ factCheck --reference-file <REFERENCE_FILE> --fact-base-file <FACT_BASE_FILE> [O
 - `--is-labeled`: Flag indicating that the `fact-base-file` contains labeled facts with truth values (`hasTruthValue`). If set, metrics will be computed.
 - `--output-ttl`: Path to the output file with predicted scores (default: `result.ttl`).
 
+## Approach Description
+
+The approach implements a fact-checking pipeline that leverages Knowledge Graph Embedding (KGE) models for evaluating the plausibility of triples. It operates in the following stages:
+
+---
+
+### **1. Data Preparation**
+- The pipeline supports input files in two formats: **N-Triples (.nt)** and **CSV** (tab-separated triples).
+- **Conversion**: If the input is an N-Triples file, it converts the data into a CSV format. The `rdfs:label` predicates are filtered out to avoid irrelevant data.
+- The parsed triples are loaded into a **PyKEEN TriplesFactory**.
+
+---
+
+### **2. Model Initialization**
+- The framework supports:
+  1. **Pretrained Models**: If a model is provided, it can be loaded directly.
+  2. **Training a New Model**: If no model is provided, a new KGE model (default: ComplEx) is trained.
+- Training is performed on the provided triples, with a default hyperparameter setup.
+- **Loss Plot**: A loss plot is generated for debugging and visualization.
+
+---
+
+### **3. Fact Parsing**
+- A parser extracts facts from an .nt file. It identifies facts represented as `rdf:Statement` nodes and captures their subject, predicate, object, and optional `hasTruthValue` literal.
+- These parsed facts are used for veracity value predictions or evaluation.
+
+---
+
+### **4. Prediction**
+- Predicts plausibility scores for triples using the KGE model.
+- Converts entity and relation labels to IDs, feeds them into the model, and retrieves raw scores. The scores are normalized to a [0,1] range using the sigmoid function.
+
+---
+
+### **5. Evaluation**
+- Supports evaluation of **labeled facts** (those with `hasTruthValue`) to compute metrics:
+  - **Accuracy**: Based on a score threshold (default: 0.8).
+  - **ROC-AUC**: Continuous score-based.
+- Writes **predictions** (truth values) to a Turtle file (`.ttl`) for GERBIL.
+
+---
+
+### **6. Outputs**
+- **Predicted Scores**: Stored in a `.ttl` file, associating each fact with a computed truth value.
+- **Evaluation Metrics**: If labeled facts are provided, outputs metrics (ROC-AUC, accuracy).
+- **Loss Plot**: Visualizes the training process for debugging.
+
 
