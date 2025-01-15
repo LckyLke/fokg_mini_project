@@ -73,7 +73,7 @@ factCheck --reference-file <REFERENCE_FILE> --fact-base-file <FACT_BASE_FILE> [O
 
 ### Optional Arguments
 
-- `--model-checkpoint`: Path to a pre-trained PyTorch model checkpoint (supported formats: `.pt`, `.pkl`, `.ptk`). If not provided, a new model is trained.
+- `--model-path`: Path to a pre-trained PyTorch model checkpoint (supported formats: `.pt`, `.pkl`, `.ptk`). If not provided, a new model is trained.
 - `--is-labeled`: Flag indicating that the `fact-base-file` contains labeled facts with truth values (`hasTruthValue`). If set, metrics will be computed.
 - `--output-ttl`: Path to the output file with predicted scores (default: `result.ttl`).
 
