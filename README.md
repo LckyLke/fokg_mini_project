@@ -50,16 +50,23 @@ https://pytorch.org/get-started/locally/
 ## Examples
 
 1. Run fact-checking with a pre-trained model:
+   
+   You can fetch our model for this 😄
+
+   Just run the following command in the project root:
    ```bash
-   factCheck --reference-file data/reference-kg.nt --fact-base-file data/fokg-sw-test-2024.nt --model-path data/model_complex/trained_model.pkl
+   wget -O data/trained_model.pkl https://files.catbox.moe/b1zwm6.pkl
+   ```
+   ```bash
+   factCheck --reference-file data/reference-kg.nt --fact-base-file data/fokg-sw-test-2024.nt --model-path data/trained_model.pkl
    ```
 
-2. Run fact-checking and compute evaluation metrics:
+3. Run fact-checking and compute evaluation metrics:
    ```bash
    factCheck --reference-file data/reference-kg.nt --fact-base-file data/fokg-sw-train-2024.nt --is-labeled
    ```
 
-3. Specify a custom output file:
+4. Specify a custom output file:
    ```bash
    factCheck --reference-file data/reference-kg.nt --fact-base-file fokg-sw-test-2024.nt --output-ttl results.ttl
    ```
