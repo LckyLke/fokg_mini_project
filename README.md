@@ -9,7 +9,7 @@ This project enables fact-checking experiments on a knowledge graph using a pre-
 
 ### Prerequisites
 
-Ensure you have **conda** installed on your system. You can install Miniconda or Anaconda from their respective websites if not already available.
+Ensure you have **conda** installed on your system. You can install Miniconda or Anaconda from their [respective websites](https://www.anaconda.com/download/success) if not already available.
 
 ### Step 1: Clone the Repository
 
